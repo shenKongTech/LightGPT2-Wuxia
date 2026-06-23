@@ -1,0 +1,40 @@
+# 模型架构配置
+model:
+  vocab_size: 12000
+  context_length: 256
+  emb_dim: 512
+  n_heads: 8
+  n_layers: 8
+  drop_rate: 0.15
+  qkv_bias: false
+
+# 训练超参数
+training:
+  batch_size: 6
+  stride: 128
+  lr: 1.5e-4
+  weight_decay: 0.01
+  num_epochs: 15
+  eval_freq: 10
+  eval_iter: 15
+  grad_clip_norm: 1.0
+  use_amp: true
+  grad_accum_steps: 4
+  warmup_ratio: 0.02
+  min_lr_ratio: 0.1
+
+# 数据集配置
+data:
+  train_ratio: 0.9
+  novel_files:
+    - "金庸-天龙八部.txt"
+    - "金庸-侠客行.txt"
+    - "金庸-笑傲江湖.txt"
+    - "金庸-倚天屠龙记.txt"
+    - "金庸-越女剑.txt"
+
+# 路径配置
+path:
+  checkpoint_path: "gpt_wuxia_bpe_checkpoint.pth"
+  bpe_model_prefix: "wuxia_bpe"
+  log_path: "train.log"
